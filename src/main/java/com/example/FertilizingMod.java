@@ -6,7 +6,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 
 public class FertilizingMod implements ModInitializer {
-    public static final String MOD_ID = "fertilizermod";
+    public static final String MOD_ID = "fertilizingmod";
     public static int RADIUS = 5;
 
     @Override
