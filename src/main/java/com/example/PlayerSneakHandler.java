@@ -11,6 +11,7 @@ import net.minecraft.world.event.GameEvent;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 public class PlayerSneakHandler {
@@ -34,42 +35,34 @@ public class PlayerSneakHandler {
         BlockPos center = player.getBlockPos();
         int radius = FertilizingMod.RADIUS;
 
-        BlockPos.iterateOutwards(center, radius, 1, radius).forEach(pos -> {
+        BlockPos.iterateOutwards(center, radius, 3, radius).forEach(pos -> {
             BlockState state = world.getBlockState(pos);
             Block block = state.getBlock();
 
-            if (isAllowedPlant(block) && block instanceof Fertilizable fertilizable) {
+            if (block instanceof Fertilizable fertilizable && !BLACKLISTED.contains(block)) {
                 if (fertilizable.isFertilizable(world, pos, state) &&
                         fertilizable.canGrow(world, world.random, pos, state)) {
 
                     fertilizable.grow(world, world.random, pos, state);
-                    world.syncWorldEvent(2005, pos, 0);
+                    world.syncWorldEvent(1505, pos, 0);
                     world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(state));
                 }
             }
         });
     }
 
-    private static boolean isAllowedPlant(Block block) {
-        return block == Blocks.WHEAT
-                || block == Blocks.CARROTS
-                || block == Blocks.POTATOES
-                || block == Blocks.BEETROOTS
-                || block == Blocks.MELON_STEM
-                || block == Blocks.PUMPKIN_STEM
-                || block == Blocks.SWEET_BERRY_BUSH
-                || block == Blocks.NETHER_WART
-                || block == Blocks.OAK_SAPLING
-                || block == Blocks.SPRUCE_SAPLING
-                || block == Blocks.BIRCH_SAPLING
-                || block == Blocks.JUNGLE_SAPLING
-                || block == Blocks.ACACIA_SAPLING
-                || block == Blocks.DARK_OAK_SAPLING
-                || block == Blocks.MANGROVE_PROPAGULE
-                || block == Blocks.CHERRY_SAPLING
-                || block == Blocks.BAMBOO_SAPLING
-                || block == Blocks.BAMBOO
-                || block == Blocks.WARPED_FUNGUS
-                || block == Blocks.CRIMSON_FUNGUS;
-    }
+    private static final Set<Block> BLACKLISTED = Set.of(
+            Blocks.GRASS_BLOCK,
+            Blocks.MOSS_BLOCK,
+            Blocks.PALE_MOSS_BLOCK,
+            Blocks.CRIMSON_NYLIUM,
+            Blocks.WARPED_NYLIUM,
+            Blocks.ROOTED_DIRT,
+            Blocks.AZALEA,
+            Blocks.FLOWERING_AZALEA,
+            Blocks.GLOW_LICHEN,
+            Blocks.PALE_HANGING_MOSS,
+            Blocks.SHORT_GRASS,
+            Blocks.TALL_GRASS
+    );
 }
