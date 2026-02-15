@@ -35,7 +35,7 @@ public class PlayerSneakHandler {
         BlockPos center = player.getBlockPos();
         int radius = FertilizingMod.RADIUS;
 
-        BlockPos.iterateOutwards(center, radius, 1, radius).forEach(pos -> {
+        BlockPos.iterateOutwards(center, radius, 3, radius).forEach(pos -> {
             BlockState state = world.getBlockState(pos);
             Block block = state.getBlock();
 
