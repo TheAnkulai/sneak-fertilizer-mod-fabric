@@ -62,9 +62,8 @@ public class PlayerSneakHandler {
             Blocks.FLOWERING_AZALEA,
             Blocks.GLOW_LICHEN,
             Blocks.PALE_HANGING_MOSS,
-            Blocks.SHORT_DRY_GRASS,
-            Blocks.TALL_DRY_GRASS,
             Blocks.SHORT_GRASS,
             Blocks.TALL_GRASS
     );
+
 }
