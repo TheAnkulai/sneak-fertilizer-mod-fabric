@@ -54,14 +54,12 @@ public class PlayerSneakHandler {
     private static final Set<Block> BLACKLISTED = Set.of(
             Blocks.GRASS_BLOCK,
             Blocks.MOSS_BLOCK,
-            Blocks.PALE_MOSS_BLOCK,
             Blocks.CRIMSON_NYLIUM,
             Blocks.WARPED_NYLIUM,
             Blocks.ROOTED_DIRT,
             Blocks.AZALEA,
             Blocks.FLOWERING_AZALEA,
             Blocks.GLOW_LICHEN,
-            Blocks.PALE_HANGING_MOSS,
             Blocks.SHORT_GRASS,
             Blocks.TALL_GRASS
     );
