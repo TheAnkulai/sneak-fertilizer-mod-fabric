@@ -65,6 +65,7 @@ public class PlayerSneakHandler {
             Blocks.SHORT_DRY_GRASS,
             Blocks.TALL_DRY_GRASS,
             Blocks.SHORT_GRASS,
-            Blocks.TALL_GRASS
+            Blocks.TALL_GRASS,
+            Blocks.BUSH
     );
 }
