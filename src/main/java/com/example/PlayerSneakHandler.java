@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Fertilizable;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
@@ -39,7 +40,7 @@ public class PlayerSneakHandler {
             BlockState state = world.getBlockState(pos);
             Block block = state.getBlock();
 
-            if (block instanceof Fertilizable fertilizable && !BLACKLISTED.contains(block)) {
+            if (block instanceof Fertilizable fertilizable && !BLACKLISTED.contains(block) && !state.isIn(BlockTags.FLOWERS)) {
                 if (fertilizable.isFertilizable(world, pos, state) &&
                         fertilizable.canGrow(world, world.random, pos, state)) {
 
